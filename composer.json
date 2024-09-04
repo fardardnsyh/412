@@ -1,0 +1,57 @@
+{
+    "name": "autoblogging-pro/autoblogging-pro",
+    "description": "Automatically fetch and publish articles from AutoBlogging Pro.",
+    "type": "wordpress-plugin",
+    "keywords": [
+        "autoblogging-pro"
+    ],
+    "homepage": "https://github.com/autoblogging-pro/autoblogging-pro",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Essa Mamdani",
+            "email": "mamdani.info@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "alleyinteractive/composer-wordpress-autoloader": "^1.0"
+    },
+    "require-dev": {
+        "alleyinteractive/alley-coding-standards": "^1.0",
+        "mantle-framework/testkit": "^0.10",
+        "szepeviktor/phpstan-wordpress": "^1.1"
+    },
+    "config": {
+        "allow-plugins": {
+            "autoblogging-proo/composer-wordpress-autoloader": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "pestphp/pest-plugin": true,
+            "alleyinteractive/composer-wordpress-autoloader": true
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "wordpress-autoloader": {
+            "autoload": {
+                "AutoBlogging_Pro\\": "src"
+            },
+            "autoload-dev": {
+                "AutoBlogging_Pro\\Tests\\": "tests"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "phpcbf": "phpcbf .",
+        "phpcs": "phpcs .",
+        "phpunit": "phpunit",
+        "phpstan": "phpstan --memory-limit=512M",
+        "test": [
+            "@phpcs",
+            "@phpstan",
+            "@phpunit"
+        ]
+    }
+}
